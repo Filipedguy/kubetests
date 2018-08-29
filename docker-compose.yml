@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  systemdataapi.application:
+    image: ${DOCKER_REGISTRY}systemdataapiapplication
+    build:
+      context: .
+      dockerfile: SystemDataAPI.Application/Dockerfile
