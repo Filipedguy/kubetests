@@ -19,7 +19,7 @@
     "SystemDataAPI.Application": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "system",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
