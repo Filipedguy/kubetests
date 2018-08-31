@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: kubetests
-        image: handsonregistry.azurecr.io/handsonregistry/kubetests:latest
+        image: stonetests.azurecr.io/filipedguy/kubetests:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
