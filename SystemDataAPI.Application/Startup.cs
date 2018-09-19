@@ -24,6 +24,8 @@ namespace SystemDataAPI.Application
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddSingleton<FailureHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

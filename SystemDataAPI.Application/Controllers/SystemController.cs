@@ -9,6 +9,13 @@ namespace SystemDataAPI.Application.Controllers
     [Route("system")]
     public class SystemController : Controller
     {
+        private FailureHelper _failure;
+
+        public SystemController(FailureHelper failure)
+        {
+            _failure = failure;
+        }
+
         [HttpGet]
         public IActionResult Get()
         {
@@ -22,15 +29,31 @@ namespace SystemDataAPI.Application.Controllers
             return Ok(systemInfo);
         }
 
-        [HttpGet("status/{id}")]
-        public IActionResult GetStatus(int id)
+        [HttpGet("status")]
+        public IActionResult GetStatus()
         {
-            if (id == 0)
+            if (_failure.IsFailing)
             {
-                return StatusCode(500, "O sistema ta zuado");
+                return StatusCode(500, "O sistema falhou");
             }
 
             return Ok("Tudo ok por aqui");
+        }
+
+        [HttpGet("status/fail")]
+        public IActionResult SetStatusFail()
+        {
+            _failure.IsFailing = true;
+
+            return Ok("Setando varíavel de falha para verdadeiro!!!");
+        }
+
+        [HttpGet("status/recover")]
+        public IActionResult SetStatusRecover()
+        {
+            _failure.IsFailing = false;
+
+            return Ok("Setando varíavel de falha para falso!!!");
         }
     }
 }
